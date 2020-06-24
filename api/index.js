@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // application/json
 
 mongoose.connect(
-  'mongodb://localhost:27017/userdb',
+  'mongodb://localhost:27017/collectionManagement',
   { useNewUrlParser: true }
 );
 
