@@ -1,14 +1,35 @@
 const Book = require("../models/book");
 
+
 const createBook = (req, res) => {
-  book.name = req.body.book;
-  book.author = req.body.author;
-  book.language = req.body.language;
-  book.tags = req.body.tags;
-  book.save();
-  book.send(200);
+  let newBook = new Book({
+    name:"vue入門",
+    author:"ポリエステル",
+    language:"Javascript",
+    tags:[{title:"フロントエンド"}]
+  });
+  // newBook.name = req.body.newBook;
+  // newBook.author = req.body.author;
+  // newBook.language = req.body.language;
+  // newBook.tags = req.body.tags;
+  // newBook.name = "vue入門";
+  // newBook.author = "ポリエステル";
+  // newBook.language = "Javascript";
+  // newBook.tags = [{title:"フロントエンド"}];
+  newBook.save((result) => {
+    res.send(200);
+  });
 };
 
-export {
-  createBook
-}
+const getBooks = (req, res) => {
+  Book.find({})
+    .then((result) => {
+      res.send(result);
+    });
+};
+
+module.exports = {
+  createBook,
+  getBooks
+};
+
