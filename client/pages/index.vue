@@ -21,6 +21,7 @@
           </div>
         </div>
       </myModal>
+    </div>
   </div>
 </template>
 
