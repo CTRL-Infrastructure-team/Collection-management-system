@@ -1,15 +1,15 @@
 <template>
-    <div>
+    <div class="sride-wrapper">
         <div class="srideShow">
             <div 
-                v-for="(sride,index) in srideStyle"
+                v-for="(sride, index) in srideStyle"
                 :key="index"
-                @click="doModal"
+                class="sride_box"
                 @touchstart="recodeX"
                 @touchend="compareX"
-                class="sride_box"
             >
-                <img :src="sride.img" :style="style.style" class="sride_img" />
+                <!-- @click="doModal" -->
+                <img :src="sride.img" :style="srideStyle.style" class="sride_img" />
             </div>
             <span class="sride_title">{{ nowTitle }}</span>
         </div>
@@ -35,7 +35,7 @@ export default {
         };
     },
     props:{
-        sridedata:{
+        srideData:{
             type: Array,
             required: true
         }
@@ -46,20 +46,17 @@ export default {
             this.counter = index;
             this.startInterval();
         },
-        
-        startinterval() {
+        startInterval() {
             intervalID = setInterval(() => {
-                this.counter = (this.counter + 1) % this.srideData.lemgth;
+                this.counter = (this.counter + 1) % this.srideData.length;
             }, 5000);
         },
-
-        doModal() {
-            this.$emit("open", this.counter);
-        },
-
+        // doModal() {
+        //     this.$emit("open", this.counter);
+        // },
         recodeX(event) {
             this.touchX = this.getClientX(event);
-            clearinterval(intervalID);
+            clearInterval(intervalID);
         },
 
         compareX(event) {
@@ -71,7 +68,7 @@ export default {
                     : (this.counter = this.srideData.length - 1);
             } else this.counter = (this.counter + 1) % this.srideData.length;
 
-            this.startinterval();
+            this.startInterval();
         },
 
         getClientX(event) {
@@ -85,20 +82,22 @@ export default {
 
     computed: {
         srideStyle() {
-            let defaultStyle = this.srideData.map((calue, index) => {
+            let defaultStyle = this.srideData.map((value, index) => {
                 value.style = {
-                    left: 100 * (index - this,counter) + "%",
+                    left: 100 * (index - this.counter) + "%",
                     transition: "all 0.4s ease"
                 };
                 if(this.counter === index) {
                     value.isActive = true;
-                }else calue.isActive = false;
-                return calue;
+                } else {
+                    value.isActive = false;
+                }
+                return value;
             });
             return defaultStyle;
         },
         nowTitle() {
-            return this.srideData[tis.counter].title;
+            return this.srideData[this.counter].title;
         }
     },
     created() {
@@ -110,10 +109,18 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.sride-wrapper {
+    width: 100%;
+}
+
 .srideShow {
     position: relative;
-    height: 35vh;
     overflow: hidden;
+    // width: 100%;
+    height: 35vh;
+    @include mq {
+        height: 55vh;
+    }
 }
 .sride {
     &_img {
@@ -121,6 +128,9 @@ export default {
         width: 100%;
         height: 35vh;
         object-fit: cover;
+        @include mq {
+            height: 55vh;
+        }
     }
     &_title {
         position: absolute;

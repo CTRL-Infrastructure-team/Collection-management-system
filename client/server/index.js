@@ -2,7 +2,6 @@ const express = require('express');
 const console = require('console');
 const { Nuxt, Builder } = require('nuxt');
 const app = express();
-var mongoose = require('mongoose');
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');

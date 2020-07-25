@@ -1,11 +1,11 @@
 <template>
   <div class="content">
-    <srideSwow :srideData="mainGuideprops"
-    class="smartPhone"
-    @open="openModal($event)"
+    <SrideShow :srideData="mainGuideprops"
+      class="sride-content"
     />
+    <!-- @open="openModal($event)" -->
     <div class="flex">
-      <mainGide class="mp0 desktop"
+      <!-- <mainGide class="mp0 desktop"
       :img="item.img"
       v-for="(item,index) in mainGuideprops"
       :key="index"
@@ -20,12 +20,37 @@
             <p>{{modalText.body}}</p>
           </div>
         </div>
-      </myModal>
+      </myModal> -->
     </div>
   </div>
 </template>
 
 <script>
+import SrideShow from "~/components/ui/SrideShow";
+// import mainGide from "~/components/ui/mainGide";
+// import myModal from "~/components/ui/myModal";
+import img1 from "~/assets/img/img1.jpg";
+import img2 from "~/assets/img/img2.jpg";
+import img3 from "~/assets/img/img3.jpg";
+import img4 from "~/assets/img/img4.jpg";
+
+export default {
+  components: {
+    SrideShow,
+    // mainGide,
+    // myModal
+  },
+  data() {
+    return {
+      mainGuideprops: [
+        { img: img1, title: "1" },
+        { img: img2, title: "2" },
+        { img: img3, title: "3" },
+        { img: img4, title: "4" }
+      ]
+    }
+  }
+}
 
 </script>
 
@@ -34,6 +59,7 @@ $modalBorder: #8193a9;
 
 .content {
   width: 100%;
+  min-height: calc(100vh - 60px);
 }
 
 @media screen and (max-width: 767px){
@@ -87,10 +113,13 @@ $modalBorder: #8193a9;
   }
 }
 
-.smartPhone {
+.sride-content {
   display: block;
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
   @include mq() {
-    display: none;
+    width: 80%;
   }
 }
 

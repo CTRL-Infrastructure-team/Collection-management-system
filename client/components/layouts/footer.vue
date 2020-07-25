@@ -1,9 +1,9 @@
 <template>
     <div>
         <transition>
-            <footer class="footer around" v-if="$store.stote.created">
+            <footer class="footer around">
                 <hr />
-                <div class="countaner">
+                <div class="container">
                     <nuxt-link
                     :to="to.to"
                     class="select_menu"
@@ -21,12 +21,21 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            menu: [
+                { to: "", name: "mail" },
+                { to: "", name: "twitter" },
+                { to: "", name: "homepage" },
+            ]
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-.contaner{
+.container{
+    height: 100px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
