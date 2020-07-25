@@ -73,7 +73,7 @@ $modalBorder: #8193a9;
 }
 .img {
   display: none;
-  @include pq(sm) {
+  @include mq(sm) {
     display: inline-block;
     object-fit: cover;
     opacity: 0.6;

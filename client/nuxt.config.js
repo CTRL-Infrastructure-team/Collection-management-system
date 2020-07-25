@@ -23,6 +23,10 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    {
+      src: "~/assets/scss/main.scss",
+      lang: "scss"
+    },
     'element-ui/lib/theme-chalk/index.css'
   ],
   /*
@@ -42,12 +46,16 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    "@nuxtjs/style-resources"
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  styleResources:{
+    scss: ["~assets/scss/variable.scss"]
   },
   /*
   ** Build configuration
