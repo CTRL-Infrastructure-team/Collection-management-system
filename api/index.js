@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // パス指定用モジュール
 const path = require('path');
 const {
-  createUser } = require("./controllers/userController");
+  createUser, getUsers } = require("./controllers/userController");
 const bookController = require("./controllers/bookController"); 
 
 app.use(express.json());
@@ -20,6 +20,7 @@ mongoose.connect(
 );
 
 app.post("/user", createUser);
+app.post("/users", getUsers);
 app.post("/books", bookController.createBook);
 app.get("/books", bookController.getBooks);
 
@@ -34,6 +35,6 @@ app.use((req, res) => {
 });
 
 module.exports = {
-  path:"/api/v1/",
+  path: "/api/v1/",
   handler: app
-}
+};

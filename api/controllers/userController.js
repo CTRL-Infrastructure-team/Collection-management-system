@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const user = require("../models/user");
 
 const createUser = (req, res) => {
   user.name = req.body.name;
@@ -10,6 +11,14 @@ const createUser = (req, res) => {
   res.send(200);
 };
 
+const getUsers = (req, res) => {
+  user.find({})
+    .then((result) => {
+      res.send(result);
+    });
+};
+
 module.exports = {
-  createUser
+  createUser,
+  getUsers
 };
