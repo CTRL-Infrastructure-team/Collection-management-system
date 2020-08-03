@@ -12,7 +12,7 @@ const createUser = (req, res) => {
 };
 
 const getUsers = (req, res) => {
-  user.find({})
+  user.find({name: 'hoge'})
     .then((result) => {
       res.send(result);
     });
