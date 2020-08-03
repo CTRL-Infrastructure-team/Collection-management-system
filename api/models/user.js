@@ -9,7 +9,7 @@ const UserSchema = new Schema({
   reserve: [{title: String}]
 });
 
-var UserModel = mongoose.model('user', UserSchema);
+let UserModel = mongoose.model('user', UserSchema);
 
 module.exports = {
   UserModel

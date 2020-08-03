@@ -1,6 +1,5 @@
 const Book = require("../models/book");
 
-
 const createBook = (req, res) => {
   let newBook = new Book({
     name:"vue入門",
@@ -32,4 +31,3 @@ module.exports = {
   createBook,
   getBooks
 };
-

@@ -3,9 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 // パス指定用モジュール
 const path = require('path');
-const {
-  createUser, getUsers } = require("./controllers/userController");
-const bookController = require("./controllers/bookController"); 
+const { createUser, getUsers } = require("./controllers/userController");
+const { createBook, getBooks } = require("./controllers/bookController"); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,9 +19,9 @@ mongoose.connect(
 );
 
 app.post("/user", createUser);
-app.post("/users", getUsers);
-app.post("/books", bookController.createBook);
-app.get("/books", bookController.getBooks);
+app.get("/user/:id", getUsers);
+app.post("/books", createBook);
+app.get("/books", getBooks);
 
 // 8080番ポートで待ちうける
 app.listen(8080, () => {

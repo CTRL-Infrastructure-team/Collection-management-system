@@ -1,18 +1,19 @@
-const User = require("../models/user");
-const user = require("../models/user");
+const { UserModel } = require("../models/user");
 
 const createUser = (req, res) => {
+  let user = new UserModel({});
   user.name = req.body.name;
   user.mail = req.body.mail;
   // user.name = 'taro';
   // user.mail = 'aa@example.com';
 
-  user.save();
-  res.send(200);
+  user.save(() => {
+    res.send(200);
+  });
 };
 
 const getUsers = (req, res) => {
-  user.find({name: 'hoge'})
+  UserModel.findById(req.params.id)
     .then((result) => {
       res.send(result);
     });
