@@ -5,7 +5,7 @@
         </div>
 
         <div class="headline">
-            現在借りている書籍 :
+            <span class="headline-title">現在借りている書籍 :</span>
             <span 
                 v-for="book in rentBooks" 
                 :key="book.id"
@@ -17,7 +17,7 @@
         </div>
 
         <div class="headline">
-            予約している書籍 :
+            <span class="headline-title">予約している書籍 :</span>
             <span 
                 v-for="book in reserveBooks" 
                 :key="book.id"
@@ -47,9 +47,10 @@ export default {
 .wrapper{
     width: 100%;
     height: 300px;
-    border: 2px solid #000000;
+    border: 2px solid #323233;
     border-radius: 5px;
-
+    margin: 10px 0px;
+    color:#323233;
 }
 .title{
     font-size: calc(15px + 0.5vw);
@@ -64,5 +65,10 @@ export default {
 .book-name{
     width: 100px;
     margin: 0px 10px;
+}
+.headline-title{
+    display: inline-block;
+    width: 25%;
+    text-align: right;
 }
 </style>
