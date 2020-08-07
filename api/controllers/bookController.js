@@ -1,4 +1,5 @@
 const Book = require("../models/book");
+const { UserModel } = require("../models/user");
 
 const createBook = (req, res) => {
   let newBook = new Book({
@@ -18,6 +19,26 @@ const createBook = (req, res) => {
   newBook.save((result) => {
     res.send(200);
   });
+};
+
+// /api/v1/books/:bookId/rent
+// application/json
+// { id: "8ru89nc7ru93cr" }
+
+const rentBook = (req, res) => {
+  Book.findById(req.params.bookId)
+    .then(result => {
+      if(!result.rent) {
+        UserModel.findByIdAndUpdate(
+          req,body.id, 
+          rentbooks: [{ title: result.title, date: Date.now() }]
+        )
+          .then(result => {
+            // +Book側変更も行う 
+            res.send(result); 
+          });
+      }
+    });
 };
 
 const getBooks = (req, res) => {
