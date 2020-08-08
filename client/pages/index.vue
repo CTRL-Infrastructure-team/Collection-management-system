@@ -22,6 +22,7 @@
         </div>
       </myModal> -->
     </div>
+    <SearchBar />
   </div>
 </template>
 
@@ -29,6 +30,7 @@
 import SrideShow from "~/components/ui/SrideShow";
 // import mainGide from "~/components/ui/mainGide";
 // import myModal from "~/components/ui/myModal";
+import SearchBar from "~/components/ui/SearchBar";
 import img1 from "~/assets/img/img1.jpg";
 import img2 from "~/assets/img/img2.jpg";
 import img3 from "~/assets/img/img3.jpg";
@@ -37,6 +39,7 @@ import img4 from "~/assets/img/img4.jpg";
 export default {
   components: {
     SrideShow,
+    SearchBar
     // mainGide,
     // myModal
   },
