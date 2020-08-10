@@ -115,7 +115,7 @@ $modalBorder: #8193a9;
 
 .sride-content {
   display: block;
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   margin: 50px auto;
   @include mq() {
