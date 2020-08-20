@@ -9,11 +9,11 @@
                 @touchend="compareX"
             >
                 <!-- @click="doModal" -->
-                <img :src="sride.img" :style="srideStyle.style" class="sride_img" />
+                <img :src="sride.img" :style="sride.style" class="sride_img" />
             </div>
-            <span class="sride_title">{{ nowTitle }}</span>
+            <!-- <span class="sride_title">{{ nowTitle }}</span> -->
         </div>
-        <div class="flex">
+        <!-- <div class="flex">
             <div
                 v-for="(value,index) in srideStyle"
                 :key="index"
@@ -21,17 +21,17 @@
                 :class="{ box_active: value.isActive }"
                 @click="changeActive(index)"
             ></div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
-let intervalID;
 export default {
     data(){
         return{
             counter: 0,
-            touch: 0
+            touch: 0,
+            intervalID:''
         };
     },
     props:{
@@ -42,12 +42,12 @@ export default {
     },
     methods:{
         changeActive(index) {
-            clearInterval(intervalID);
+            clearInterval(this.intervalID);
             this.counter = index;
             this.startInterval();
         },
         startInterval() {
-            intervalID = setInterval(() => {
+            this.intervalID = setInterval(() => {
                 this.counter = (this.counter + 1) % this.srideData.length;
             }, 5000);
         },
@@ -56,7 +56,7 @@ export default {
         // },
         recodeX(event) {
             this.touchX = this.getClientX(event);
-            clearInterval(intervalID);
+            clearInterval(this.intervalID);
         },
 
         compareX(event) {
@@ -84,7 +84,7 @@ export default {
         srideStyle() {
             let defaultStyle = this.srideData.map((value, index) => {
                 value.style = {
-                    left: 100 * (index - this.counter) + "%",
+                    left: 70 * (index - this.counter) + 20 + "%" ,
                     transition: "all 0.4s ease"
                 };
                 if(this.counter === index) {
@@ -104,7 +104,7 @@ export default {
         this.startInterval();
     },
     destroyed() {
-        clearInterval(intervalID);
+        clearInterval(this.intervalID);
     }
 };
 </script>
@@ -115,21 +115,22 @@ export default {
 
 .srideShow {
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     // width: 100%;
-    height: 35vh;
+    height: 20vh;
     @include mq {
-        height: 55vh;
+        height: 30vh;
     }
 }
 .sride {
     &_img {
         position: absolute;
-        width: 100%;
-        height: 35vh;
+        width: 60%;
+        left:15%;
+        height: 20vh;
         object-fit: cover;
         @include mq {
-            height: 55vh;
+            height: 30vh;
         }
     }
     &_title {
@@ -154,9 +155,10 @@ export default {
             right: 0;
             top: 0;
             bottom: 0;
-            background: linear-gradient(
-                rgba(0, 0, 0, 0) 0 80%,
-                rgba(0, 0, 0, 0.2) 80% 100%
+            background: linear-gradient(to right,
+                rgba(0, 0, 0, 0.2) 10%,
+                rgba(0, 0, 0, 0) 10% 90%,
+                rgba(0, 0, 0, 0.2) 90%
             );
         }
     }
