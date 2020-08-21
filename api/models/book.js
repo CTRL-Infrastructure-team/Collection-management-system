@@ -6,7 +6,7 @@ const BookSchema = new Schema({
   author: String,
   language: String,
   tags: [{ title: String }],
-  rent: "Taro"
+  rent: String
 });
 
 // var BookModel = mongoose.model('book', BookSchema);
