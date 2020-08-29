@@ -111,6 +111,8 @@ export default {
 <style lang="scss" scoped>
 .sride-wrapper {
     width: 100%;
+    max-width: 1000px;
+    overflow: hidden;
 }
 
 .srideShow {
