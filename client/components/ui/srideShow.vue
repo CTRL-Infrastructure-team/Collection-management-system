@@ -110,18 +110,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .sride-wrapper {
-    width: 100%;
-    max-width: 1000px;
     overflow: hidden;
 }
 
 .srideShow {
     position: relative;
-    // overflow: hidden;
-    // width: 100%;
     height: 20vh;
     @include mq {
-        height: 30vh;
+        height: 40vh;
     }
 }
 .sride {
@@ -132,7 +128,7 @@ export default {
         height: 20vh;
         object-fit: cover;
         @include mq {
-            height: 30vh;
+            height: 40vh;
         }
     }
     &_title {
@@ -173,15 +169,5 @@ export default {
     padding: 0 10%;
 }
 
-.box {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: rgb(143, 142, 142);
-    border: solid 1px #5c5a5a;
-    width: 22%;
-    height: 9px;
-    &_active {
-        background: #f0f0f0;
-    }
-}
+
 </style>
