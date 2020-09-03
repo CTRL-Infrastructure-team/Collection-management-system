@@ -37,6 +37,7 @@ export default {
 .container{
     height: 100px;
     display: flex;
+    background: #B1DBD2;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 30px 10%;
